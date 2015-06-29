@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Welcome to People!</h1>
+  <h2>Hello, World!</h2>
+  <p>Looking for the right content?</p>
+<table>
+    <tr>
+      <td>Title</td>
+      <td>Body</td>
+      <td>Author</td>
+      <td>Tags</td>
+    </tr>
+
+    <% @posts.each do |p| %>
+      <tr>
+        <td><%= p.title %></td>
+        <td><%= p.body %></td>
+        <td><%= p.author %></td>
+        <td><% p.tags.each do |t| %><%= t.name %>
+        <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table><br><br><br>
+
+
+  <form action="/posts" method="post">
+  <input type= "text" name="post[title]" placeholder="title"><br><br>
+  <input type= "text" name="post[body]" placeholder="body"><br><br>
+  <input type= "text" name="post[author]" placeholder="author"><br><br>
+  <input type= "text" name="tag[name]" placeholder="tag name"><br><br>
+
+
+  <input type= "submit" value="Submit">
+  <%= @error if @error %>
+  </form>
+</div>
+
+
+<style>
+  td{
+    padding: 0px 20px 0px 20px;
+  }
+</style>
